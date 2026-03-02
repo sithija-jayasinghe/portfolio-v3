@@ -1,0 +1,57 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+const skills = {
+  "Programming Languages": ["Java", "JavaScript", "TypeScript"],
+  "Frameworks & Libraries": ["Spring Boot", "React", "Next.js", "Angular", "Tailwind CSS", "Bootstrap"],
+  "Databases & Backend": ["MySQL", "Supabase", "Firebase", "Node.js"],
+  "Tools & Platforms": ["Git", "GitHub", "REST APIs", "Atlassian Jira"]
+};
+
+export default function Stack() {
+  return (
+    <section id="stack" className="py-24 px-4 bg-zinc-950 border-t border-zinc-900/50">
+      <div className="max-w-5xl mx-auto">
+        <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.5 }}
+           className="mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold text-white uppercase text-center md:text-left">
+            My Stack<span className="text-emerald-500">.</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {Object.entries(skills).map(([category, items], idx) => (
+            <motion.div
+              key={category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="space-y-6"
+            >
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 border-b border-zinc-900 pb-2">
+                {category}
+              </h3>
+              <div className="flex w-full flex-wrap gap-3">
+                {items.map((skill) => (
+                  <div
+                    key={skill}
+                    className="flex items-center gap-2 px-4 py-2 bg-zinc-900/50 border border-zinc-800 rounded-lg hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all cursor-default"
+                  >
+                    <span className="text-zinc-300 font-medium text-sm md:text-base">{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
