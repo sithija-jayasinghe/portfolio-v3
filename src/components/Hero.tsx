@@ -123,15 +123,20 @@ export default function Hero() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a
-              href="#contact"
+              href="mailto:harshanajayasinghe113@gmail.com"
               className="inline-flex items-center justify-center h-12 px-8 font-medium text-zinc-950 bg-emerald-500 rounded-full hover:bg-emerald-400 transition-colors gap-2"
             >
               Contact Me
             </a>
-            <button className="inline-flex items-center justify-center h-12 px-6 font-medium text-white border border-zinc-800 rounded-full hover:bg-zinc-900 transition-colors gap-2 group">
+            <a 
+              href="/resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center justify-center h-12 px-6 font-medium text-white border border-zinc-800 rounded-full hover:bg-zinc-900 transition-colors gap-2 group"
+            >
               <span>View Resume</span>
-            </button>
-            <button 
+            </a>
+            <button
               onClick={() => navigator.clipboard.writeText("harshanajayasinghe113@gmail.com")}
               className="inline-flex items-center justify-center h-12 w-12 text-zinc-400 border border-zinc-800 rounded-full hover:bg-zinc-900 hover:text-white transition-colors group"
               aria-label="Copy email"
