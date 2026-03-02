@@ -5,9 +5,9 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 
 const navLinks = [
-  { name: "Home", href: "#" },
-  { name: "About Me", href: "#about" },
-  { name: "Projects", href: "#projects" },
+  { name: "Home", href: "/" },
+  { name: "About Me", href: "/#about" },
+  { name: "Projects", href: "/#projects" },
 ];
 
 export default function Footer() {
@@ -22,7 +22,7 @@ export default function Footer() {
       >
         
         <div className="flex flex-col items-center md:items-start gap-4 space-y-2">
-           <Link href="#" className="text-2xl font-black text-white hover:text-emerald-400 transition-colors">
+           <Link href="/" className="text-2xl font-black text-white hover:text-emerald-400 transition-colors">
             SJ<span className="text-emerald-500">.</span>
           </Link>
           <div className="flex gap-4">

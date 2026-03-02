@@ -6,10 +6,10 @@ import { Menu, X, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "#", label: "Home" },
-  { href: "#about", label: "About Me" },
-  { href: "#stack", label: "Stack" },
-  { href: "#projects", label: "Projects" },
+  { href: "/", label: "Home" },
+  { href: "/#about", label: "About Me" },
+  { href: "/#stack", label: "Stack" },
+  { href: "/#projects", label: "Projects" },
 ];
 
 export default function Navbar() {
@@ -35,7 +35,7 @@ export default function Navbar() {
     >
       <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
         
-        <Link href="#" className="flex items-center gap-2 group relative z-50">
+        <Link href="/" className="flex items-center gap-2 group relative z-50">
           <span className="text-2xl font-black tracking-tighter text-white group-hover:text-emerald-400 transition-colors">
             SJ<span className="text-emerald-500">.</span>
           </span>
