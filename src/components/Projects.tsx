@@ -30,7 +30,7 @@ export default function Projects() {
           </a>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
@@ -61,11 +61,11 @@ export default function Projects() {
                 </div>
               </div>
 
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors relative z-10 pointer-events-none">
+              <h3 className="text-lg md:text-xl font-bold line-clamp-2 text-white mb-3 group-hover:text-emerald-400 transition-colors relative z-10 pointer-events-none">
                 {project.title}
               </h3>
               
-              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed mb-8 flex-grow relative z-10 pointer-events-none">
+              <p className="text-zinc-400 text-sm xl:text-[15px] leading-relaxed mb-6 line-clamp-3 flex-grow relative z-10 pointer-events-none">
                 {project.description}
               </p>
 

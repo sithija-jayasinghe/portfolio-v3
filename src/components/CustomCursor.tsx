@@ -37,36 +37,32 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <>
-      <motion.div
-        className="fixed top-0 left-0 w-4 h-4 bg-emerald-500 rounded-full pointer-events-none z-[9999] mix-blend-screen"
-        animate={{
-          x: mousePosition.x - 8,
-          y: mousePosition.y - 8,
-          scale: isHovering ? 2.5 : 1,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 700,
-          damping: 28,
-          mass: 2,
-        }}
-      />
-      <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-emerald-500/50 rounded-full pointer-events-none z-[9998]"
-        animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
-          scale: isHovering ? 1.5 : 1,
-          opacity: isHovering ? 0 : 1,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 150,
-          damping: 20,
-          mass: 0.5,
-        }}
-      />
-    </>
+    <motion.div
+      className="fixed top-0 left-0 pointer-events-none z-[999999]"
+      style={{ originX: 0, originY: 0 }}
+      animate={{
+        x: mousePosition.x - 4, // Offset to align SVG tip to actual click point
+        y: mousePosition.y - 2, // Offset to align SVG tip to actual click point
+        scale: isHovering ? 1.15 : 1,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 1000,
+        damping: 40,
+        mass: 0.1,
+      }}
+    >
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="#e4e4e7"
+        stroke="rgba(16,185,129,0)"
+        strokeWidth="1"
+        className="drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] filter mix-blend-difference"
+      >
+        <path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 01.35-.15h6.42a.5.5 0 00.35-.85L5.5 3.21z" />
+      </svg>
+    </motion.div>
   );
 }
