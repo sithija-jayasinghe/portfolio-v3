@@ -81,8 +81,8 @@ function ScrollIndicator() {
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 overflow-hidden pt-24 pb-12">
-      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-20 mt-[-10%]">
+    <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 overflow-hidden pt-26 pb-12">
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-20">
         <h1 className="text-[12vw] font-black tracking-tighter text-zinc-800 whitespace-nowrap hidden md:block select-none">
           FULLSTACK ENGINEER
         </h1>
@@ -102,21 +102,13 @@ export default function Hero() {
 
       <Particles />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center justify-center mt-12 pb-16">
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center justify-center mt-0 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="w-full text-center space-y-6 flex flex-col items-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 text-sm text-zinc-400 border border-zinc-800 rounded-full bg-zinc-900/50 backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            Available for opportunities
-          </div>
-
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
             Hi! I&apos;m <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
