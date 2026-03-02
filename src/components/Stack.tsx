@@ -14,10 +14,10 @@ export default function Stack() {
     <section id="stack" className="py-24 px-4 bg-zinc-950 border-t border-zinc-900/50">
       <div className="max-w-5xl mx-auto">
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.5 }}
+           initial={{ opacity: 0, y: 40, filter: "blur(10px)", scale: 0.95 }}
+           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
+           viewport={{ once: false, amount: 0.2 }}
+           transition={{ duration: 0.6, ease: "easeOut" }}
            className="mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white uppercase text-center md:text-left">
@@ -29,10 +29,10 @@ export default function Stack() {
           {Object.entries(skills).map(([category, items], idx) => (
             <motion.div
               key={category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
               className="space-y-6"
             >
               <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 border-b border-zinc-900 pb-2">

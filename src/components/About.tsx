@@ -9,10 +9,10 @@ export default function About() {
         
         {/* Large Statement Section */}
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.8 }}
+           initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+           viewport={{ once: false, amount: 0.2 }}
+           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-light text-zinc-300 leading-tight tracking-tight">
             I believe in building functional, scalable, and user-centered applications that solve real-world problems.
@@ -22,10 +22,10 @@ export default function About() {
         {/* Detailed Info Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-zinc-900/50 pt-16">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, x: -30, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="md:col-span-6 lg:col-span-5 flex flex-col justify-between h-full space-y-8"
           >
             <div>
@@ -37,10 +37,10 @@ export default function About() {
           </motion.div>
 
           <motion.div 
-             initial={{ opacity: 0, x: 20 }}
-             whileInView={{ opacity: 1, x: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 0.5, delay: 0.2 }}
+             initial={{ opacity: 0, x: 30, filter: "blur(8px)" }}
+             whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+             viewport={{ once: false, amount: 0.2 }}
+             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
              className="md:col-span-6 lg:col-span-7 space-y-6 text-zinc-400 text-lg leading-relaxed"
           >
             <p>

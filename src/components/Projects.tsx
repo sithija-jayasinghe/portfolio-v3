@@ -54,10 +54,10 @@ export default function Projects() {
     <section id="projects" className="py-24 px-4 bg-zinc-950 border-t border-zinc-900/50">
       <div className="max-w-5xl mx-auto">
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.5 }}
+           initial={{ opacity: 0, y: 40, filter: "blur(10px)", scale: 0.95 }}
+           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
+           viewport={{ once: false, amount: 0.2 }}
+           transition={{ duration: 0.6, ease: "easeOut" }}
            className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white uppercase">
@@ -72,10 +72,10 @@ export default function Projects() {
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              initial={{ opacity: 0, y: 40, filter: "blur(8px)", scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
               className="group relative bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 sm:p-8 hover:bg-zinc-900/80 hover:border-zinc-700 transition-all flex flex-col h-full"
             >
               <div className="flex justify-between items-start mb-6">
@@ -115,12 +115,18 @@ export default function Projects() {
           ))}
         </div>
         
-        <div className="mt-20 text-center">
+        <motion.div 
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mt-20 text-center"
+        >
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Have a project in mind?</h3>
             <a href="mailto:harshanajayasinghe113@gmail.com" className="inline-flex items-center justify-center h-14 px-8 text-lg font-medium text-zinc-950 bg-emerald-500 hover:bg-emerald-400 rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_-10px_rgba(16,185,129,0.5)]">
                 Let&apos;s Work Together
             </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
