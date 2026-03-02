@@ -1,11 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Particles from "./Particles";
 
 export default function About() {
   return (
-    <section id="about" className="py-32 px-4 bg-zinc-950 relative border-t border-zinc-900/50">
-      <div className="max-w-5xl mx-auto flex flex-col gap-24">
+    <section id="about" className="py-32 px-4 bg-zinc-950 relative border-t border-zinc-900/50 overflow-hidden">
+      <Particles quantity={20} />
+      
+      {/* Gamer Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[40vh] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto flex flex-col gap-24 relative z-10">
         
         {/* Large Statement Section */}
         <motion.div

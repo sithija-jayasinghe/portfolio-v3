@@ -4,11 +4,17 @@ import { motion } from "framer-motion";
 import { FolderGit2, ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import Particles from "./Particles";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-4 bg-zinc-950 border-t border-zinc-900/50">
-      <div className="max-w-5xl mx-auto">
+    <section id="projects" className="py-24 px-4 bg-zinc-950 border-t border-zinc-900/50 relative overflow-hidden">
+      <Particles quantity={25} />
+      
+      {/* Gamer Background Glow */}
+      <div className="absolute bottom-0 left-0 w-[50vw] h-[50vh] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
            initial={{ opacity: 0, y: 40, filter: "blur(10px)", scale: 0.95 }}
            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
@@ -32,7 +38,8 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
-              className="group relative bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 sm:p-8 hover:bg-zinc-900/80 hover:border-zinc-700 transition-all flex flex-col h-full"
+              whileHover={{ y: -8 }}
+              className="group relative bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 sm:p-8 hover:bg-zinc-900/80 hover:border-emerald-500/50 hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.2)] transition-all flex flex-col h-full"
             >
               <Link href={`/projects/${project.slug}`} className="absolute inset-0 z-0 rounded-2xl" aria-label={`View details for ${project.title}`} />
               

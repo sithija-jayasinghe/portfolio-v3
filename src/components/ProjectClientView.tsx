@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { ProjectDetails } from "@/data/projects";
 import { useEffect, useState } from "react";
@@ -44,6 +45,80 @@ function Particles() {
   );
 }
 
+function MockupCard({ src, index }: { src: string, index: number }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    x.set(event.clientX - rect.left - rect.width / 2);
+    y.set(event.clientY - rect.top - rect.height / 2);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const rotateX = useTransform(y, [-200, 200], [5, -5]);
+  const rotateY = useTransform(x, [-200, 200], [-5, 5]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.7, delay: index * 0.2 }}
+      style={{ perspective: 1000 }}
+      className="w-full relative group"
+    >
+      <motion.div
+         onMouseMove={handleMouseMove}
+         onMouseLeave={handleMouseLeave}
+         style={{ rotateX, rotateY }}
+         className="relative w-full aspect-[16/9] rounded-xl bg-zinc-900 border border-zinc-800/80 shadow-2xl overflow-hidden transition-all duration-300 ease-out z-10"
+      >
+        {/* RGB/Glow Border effect that appears on hover */}
+        <div className="absolute inset-0 z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl ring-2 ring-emerald-500/50 mix-blend-overlay" />
+        <div className="absolute inset-0 z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-tr from-emerald-500/10 to-transparent" />
+        
+        {/* Top Browser/App Bar */}
+        <div className="absolute top-0 inset-x-0 h-10 bg-zinc-950/80 backdrop-blur-md flex items-center gap-2 px-4 border-b border-zinc-800/50 z-30">
+            <div className="w-3 h-3 rounded-full bg-red-500/80" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+            <div className="ml-4 text-xs font-mono text-zinc-600 truncate flex-1 opacity-50 select-none">
+              project-demo_{index + 1}.exe
+            </div>
+        </div>
+
+        {/* Since you don't have images yet, we will fallback gracefully if image fails or just show placeholder */}
+        <div className="absolute inset-0 pt-10 flex items-center justify-center bg-zinc-900/50">
+          <p className="text-zinc-500 font-mono text-sm tracking-widest z-0 opacity-50">
+            PLACE IMAGE IN public/mockups/ AND USE NEXT/IMAGE HERE
+          </p>
+        </div>
+        
+        {/* Image actually rendered */}
+        <div className="absolute inset-0 pt-10 z-10">
+           {/* Fallback to normal img to prevent next/image build crash if src doesn't exist locally currently */}
+           <img 
+               src={src} 
+               alt={`Project Mockup ${index + 1}`} 
+               className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+               onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+               }}
+           />
+        </div>
+      </motion.div>
+      
+      {/* Ambient Floor Glow behind card */}
+      <div className="absolute -inset-4 bg-gradient-to-r from-emerald-600/0 via-emerald-500/20 to-emerald-600/0 blur-2xl z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+    </motion.div>
+  );
+}
+
 export default function ProjectClientView({ project }: { project: ProjectDetails }) {
   const stagger = {
     hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
@@ -51,7 +126,7 @@ export default function ProjectClientView({ project }: { project: ProjectDetails
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: { delay: custom * 0.1, duration: 0.5, ease: "easeOut" }
+      transition: { delay: custom * 0.1, duration: 0.5, ease: "easeOut" as const }
     })
   };
 
@@ -216,30 +291,12 @@ export default function ProjectClientView({ project }: { project: ProjectDetails
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-12 flex items-center gap-3">
                 <span className="text-emerald-500 font-mono text-lg">04.</span> Visuals
               </h2>
-              <div className="flex flex-col gap-12 w-full">
+              <div className="flex flex-col gap-20 w-full mb-10">
                 {project.mockups.map((mockup, i) => (
-                  <motion.div 
-                    key={i} 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="w-full aspect-[16/9] bg-zinc-900 rounded-3xl border border-zinc-800/50 overflow-hidden flex items-center justify-center relative group shadow-2xl"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-tr from-zinc-900 via-zinc-800/20 to-zinc-800/50 group-hover:opacity-60 transition-opacity duration-500" />
-                    {/* Minimalist UI frame overlay */}
-                    <div className="absolute top-0 inset-x-0 h-10 bg-zinc-950/50 flex items-center gap-2 px-4 border-b border-zinc-800/50">
-                        <div className="w-3 h-3 rounded-full bg-zinc-700" />
-                        <div className="w-3 h-3 rounded-full bg-zinc-700" />
-                        <div className="w-3 h-3 rounded-full bg-zinc-700" />
-                    </div>
-                    <span className="text-zinc-600 font-medium tracking-[0.2em] text-sm uppercase z-10 group-hover:scale-105 transition-transform duration-500">
-                      Mockup placeholder {i+1}
-                    </span>
-                  </motion.div>
+                  <MockupCard key={i} src={mockup} index={i} />
                 ))}
               </div>
             </motion.section>

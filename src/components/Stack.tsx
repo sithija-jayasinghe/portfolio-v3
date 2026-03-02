@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Particles from "./Particles";
 
 const skills = {
   "Programming Languages": ["Java", "JavaScript", "TypeScript"],
@@ -11,8 +12,13 @@ const skills = {
 
 export default function Stack() {
   return (
-    <section id="stack" className="py-24 px-4 bg-zinc-950 border-t border-zinc-900/50">
-      <div className="max-w-5xl mx-auto">
+    <section id="stack" className="py-24 px-4 bg-zinc-950 border-t border-zinc-900/50 relative overflow-hidden">
+      <Particles quantity={15} />
+
+      {/* Gamer Background Glow */}
+      <div className="absolute top-0 right-0 w-[40vw] h-[40vh] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
            initial={{ opacity: 0, y: 40, filter: "blur(10px)", scale: 0.95 }}
            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
@@ -42,9 +48,9 @@ export default function Stack() {
                 {items.map((skill) => (
                   <div
                     key={skill}
-                    className="flex items-center gap-2 px-4 py-2 bg-zinc-900/50 border border-zinc-800 rounded-lg hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all cursor-default"
+                    className="flex items-center gap-2 px-4 py-2 bg-zinc-900/50 border border-zinc-800 rounded-lg hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all cursor-default group hover:shadow-[0_0_15px_-3px_rgba(16,185,129,0.3)] hover:-translate-y-1"
                   >
-                    <span className="text-zinc-300 font-medium text-sm md:text-base">{skill}</span>
+                    <span className="text-zinc-300 font-medium text-sm md:text-base group-hover:text-emerald-400 transition-colors">{skill}</span>
                   </div>
                 ))}
               </div>
