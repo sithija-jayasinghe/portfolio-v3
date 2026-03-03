@@ -23,7 +23,7 @@ export default function Footer() {
         
         <div className="flex flex-col items-center md:items-start gap-4 space-y-2">
            <Link href="/" className="text-2xl font-black text-white hover:text-emerald-400 transition-colors">
-            SJ<span className="text-emerald-500">.</span>
+            SHJ<span className="text-emerald-500">.</span>
           </Link>
           <div className="flex gap-4">
              <a href="https://github.com/sithija-jayasinghe" target="_blank" rel="noreferrer" className="p-2 bg-zinc-900 rounded-full text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all">

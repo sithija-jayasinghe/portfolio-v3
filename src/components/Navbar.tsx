@@ -37,7 +37,7 @@ export default function Navbar() {
         
         <Link href="/" className="flex items-center gap-2 group relative z-50">
           <span className="text-2xl font-black tracking-tighter text-white group-hover:text-emerald-400 transition-colors">
-            SJ<span className="text-emerald-500">.</span>
+            SHJ<span className="text-emerald-500">.</span>
           </span>
         </Link>
 
