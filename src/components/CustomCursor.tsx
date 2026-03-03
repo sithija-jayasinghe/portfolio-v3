@@ -10,6 +10,11 @@ export default function CustomCursor() {
 
   useEffect(() => {
     setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -32,13 +37,13 @@ export default function CustomCursor() {
     window.addEventListener("mousemove", updateMousePosition);
     window.addEventListener("mouseover", handleMouseOver);
 
-    if (!isMounted) return null;
-
-  return () => {
+    return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, []);
+  }, [isMounted]);
+
+  if (!isMounted) return null;
 
   return (
     <motion.div

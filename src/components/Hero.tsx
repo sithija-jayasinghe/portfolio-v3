@@ -85,7 +85,7 @@ function ScrollIndicator() {
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 overflow-hidden pt-26 pb-12">
+    <section className="relative flex flex-col items-center justify-center min-h-[100svh] px-4 overflow-hidden pt-24 md:pt-32 pb-12">
       <div className="absolute inset-0 z-0 flex items-center justify-center opacity-20">
         <h1 className="text-[12vw] font-black tracking-tighter text-zinc-800 whitespace-nowrap hidden md:block select-none">
           FULLSTACK ENGINEER
@@ -113,40 +113,43 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="w-full text-center space-y-6 flex flex-col items-center"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
-            Hi! I&apos;m <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
-              Sithija Harshana Jayasinghe
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight mb-2 md:mb-4">
+            Hi! I&apos;m <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600 block sm:inline sm:ml-3">
+              Sithija Harshana
+              <br className="block sm:hidden" /> Jayasinghe
             </span>
-            .
+            <span className="hidden sm:inline">.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto text-balance leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto text-balance leading-relaxed px-2">
             An aspiring Fullstack Engineer creating high-performance, scalable, and responsive web solutions. Seeking to grow technically and contribute effectively to a development team.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto px-4 sm:px-0">
             <a
               href="mailto:harshanajayasinghe113@gmail.com"
-              className="inline-flex items-center justify-center h-12 px-8 font-medium text-zinc-950 bg-emerald-500 rounded-full hover:bg-emerald-400 transition-colors gap-2"
+              className="inline-flex items-center justify-center h-12 px-8 font-medium text-zinc-950 bg-emerald-500 rounded-full hover:bg-emerald-400 transition-colors gap-2 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-zinc-950"
             >
               Contact Me
             </a>
-            <a 
-              href="/resume.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center h-12 px-6 font-medium text-white border border-zinc-800 rounded-full hover:bg-zinc-900 transition-colors gap-2 group"
-            >
-              <span>View Resume</span>
-            </a>
-            <button
-              onClick={() => navigator.clipboard.writeText("harshanajayasinghe113@gmail.com")}
-              className="inline-flex items-center justify-center h-12 w-12 text-zinc-400 border border-zinc-800 rounded-full hover:bg-zinc-900 hover:text-white transition-colors group"
-              aria-label="Copy email"
-            >
-              <Copy className="w-5 h-5 group-active:scale-95 transition-transform" />
-            </button>
+            <div className="flex w-full sm:w-auto gap-4">
+              <a 
+                href="/resume.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center h-12 px-6 font-medium text-white border border-zinc-800 rounded-full hover:bg-zinc-900 transition-colors gap-2 group flex-1 sm:flex-none focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-950"
+              >
+                <span>View Resume</span>
+              </a>
+              <button
+                onClick={() => navigator.clipboard.writeText("harshanajayasinghe113@gmail.com")}
+                className="inline-flex items-center justify-center h-12 w-12 shrink-0 text-zinc-400 border border-zinc-800 rounded-full hover:bg-zinc-900 hover:text-white transition-colors group focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-950"
+                aria-label="Copy email"
+              >
+                <Copy className="w-5 h-5 group-active:scale-95 transition-transform" />
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>
